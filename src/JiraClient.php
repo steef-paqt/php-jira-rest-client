@@ -197,6 +197,8 @@ class JiraClient
 
         curl_reset($this->curl);
         $ch = $this->curl;
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, $this->configuration->getTimeout());
+        curl_setopt($ch, CURLOPT_TIMEOUT, $this->configuration->getTimeout());
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
         curl_setopt($ch, CURLOPT_URL, $url);
 
@@ -236,7 +238,8 @@ class JiraClient
             curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
         }
 
-        curl_setopt($ch, CURLOPT_ENCODING, '');
+        // remove for avoid https://github.com/php/php-src/issues/14184
+        //curl_setopt($ch, CURLOPT_ENCODING, '');
 
         curl_setopt(
             $ch,
@@ -484,11 +487,14 @@ class JiraClient
     /**
      * convert to query array to http query parameter.
      */
-    public function toHttpQueryParameter(array $paramArray): string
+    public function toHttpQueryParameter(array $paramArray, bool $dropNullKey = true): string
     {
         $queryParam = '?';
 
         foreach ($paramArray as $key => $value) {
+            if ($dropNullKey === true && empty($value)) {
+                continue;
+            }
             $v = null;
 
             // some param field(Ex: expand) type is array.
@@ -604,6 +610,11 @@ class JiraClient
             $username = $this->getConfiguration()->getProxyUser();
             $password = $this->getConfiguration()->getProxyPassword();
             curl_setopt($ch, CURLOPT_PROXYUSERPWD, "$username:$password");
+        }
+
+        // Set the proxy type for curl, default is CURLPROXY_HTTP (0)
+        if ($this->getConfiguration()->getProxyType()) {
+            curl_setopt($ch, CURLOPT_PROXYTYPE, $this->getConfiguration()->getProxyType());
         }
     }
 
