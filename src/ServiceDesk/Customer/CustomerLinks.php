@@ -14,5 +14,5 @@ class CustomerLinks implements JsonSerializable
     use DataObjectTrait;
 
     public string $jiraRest;
-    public object $avatarUrls;
+    public array $avatarUrls;
 }

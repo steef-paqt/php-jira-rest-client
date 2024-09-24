@@ -14,7 +14,7 @@ class Reporter implements \JsonSerializable
 
     public string $self;
 
-    public ?string $name;
+    public ?string $name = null;
 
     public ?string $emailAddress = null;
 
@@ -22,7 +22,7 @@ class Reporter implements \JsonSerializable
 
     public string $displayName;
 
-    public string $active;
+    public bool $active;
 
     // want assignee to unassigned
     private bool $wantUnassigned = false;
