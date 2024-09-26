@@ -10,7 +10,7 @@ class Reporter implements \JsonSerializable
 
     public string $key;
 
-    public string $timezone;
+    public string $timeZone;
 
     public string $self;
 
