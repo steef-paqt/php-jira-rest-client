@@ -27,7 +27,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function approved()
+    public static function approved(): self
     {
         return new self('approved()');
     }
@@ -40,7 +40,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function approver(...$users)
+    public static function approver(...$users): self
     {
         return new self('approver('.implode(', ', $users).')');
     }
@@ -54,7 +54,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function cascadeOption($parentOption, $childOption = null)
+    public static function cascadeOption($parentOption, $childOption = null): self
     {
         $expression = "cascadeOption($parentOption";
         if ($childOption !== null) {
@@ -71,7 +71,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function closedSprints()
+    public static function closedSprints(): self
     {
         return new self('closedSprints()');
     }
@@ -84,7 +84,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function componentsLeadByUser($user = null)
+    public static function componentsLeadByUser($user = null): self
     {
         return new self("componentsLeadByUser($user)");
     }
@@ -95,7 +95,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function currentLogin()
+    public static function currentLogin(): self
     {
         return new self('currentLogin()');
     }
@@ -106,7 +106,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function currentUser()
+    public static function currentUser(): self
     {
         return new self('currentUser()');
     }
@@ -119,7 +119,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function earliestUnreleasedVersion($project)
+    public static function earliestUnreleasedVersion($project): self
     {
         return new self("earliestUnreleasedVersion($project)");
     }
@@ -132,7 +132,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function endOfDay($inc = null)
+    public static function endOfDay($inc = null): self
     {
         if ($inc !== null) {
             $inc = JqlQuery::quote($inc);
@@ -149,7 +149,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function endOfMonth($inc = null)
+    public static function endOfMonth($inc = null): self
     {
         if ($inc !== null) {
             $inc = JqlQuery::quote($inc);
@@ -166,7 +166,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function endOfWeek($inc = null)
+    public static function endOfWeek($inc = null): self
     {
         if ($inc !== null) {
             $inc = JqlQuery::quote($inc);
@@ -183,7 +183,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function endOfYear($inc = null)
+    public static function endOfYear($inc = null): self
     {
         if ($inc !== null) {
             $inc = JqlQuery::quote($inc);
@@ -198,7 +198,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function issueHistory()
+    public static function issueHistory(): self
     {
         return new self('issueHistory()');
     }
@@ -209,7 +209,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function issuesWithRemoteLinksByGlobalId()
+    public static function issuesWithRemoteLinksByGlobalId(): self
     {
         return new self('issuesWithRemoteLinksByGlobalId()');
     }
@@ -220,7 +220,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function lastLogin()
+    public static function lastLogin(): self
     {
         return new self('lastLogin()');
     }
@@ -233,7 +233,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function latestReleasedVersion(string $project)
+    public static function latestReleasedVersion(string $project): self
     {
         return new self("latestReleasedVersion($project)");
     }
@@ -245,7 +245,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function linkedissue($issueKey)
+    public static function linkedissue($issueKey): self
     {
         $expression = "linkedissue = $issueKey";
 
@@ -263,7 +263,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function linkedIssues($issueKey, $supportedOperator = 'IN', $caseSensitiveLinkType = null)
+    public static function linkedIssues($issueKey, $supportedOperator = 'IN', $caseSensitiveLinkType = null): self
     {
         $expression = "issue $supportedOperator linkedIssues($issueKey";
         if ($caseSensitiveLinkType !== null) {
@@ -282,7 +282,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function membersOf($group)
+    public static function membersOf($group): self
     {
         return new self('membersOf('.JqlQuery::quote($group).')');
     }
@@ -293,7 +293,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function myApproval()
+    public static function myApproval(): self
     {
         return new self('myApproval()');
     }
@@ -304,7 +304,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function myPending()
+    public static function myPending(): self
     {
         return new self('myPending()');
     }
@@ -315,7 +315,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function now()
+    public static function now(): self
     {
         return new self('now()');
     }
@@ -326,7 +326,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function openSprints()
+    public static function openSprints(): self
     {
         return new self('openSprints()');
     }
@@ -337,7 +337,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function pending()
+    public static function pending(): self
     {
         return new self('pending()');
     }
@@ -350,7 +350,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function pendingBy(...$users)
+    public static function pendingBy(...$users): self
     {
         return new self('pendingBy('.implode(', ', $users).')');
     }
@@ -363,7 +363,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function projectsLeadByUser($username = null)
+    public static function projectsLeadByUser($username = null): self
     {
         return new self("projectsLeadByUser($username)");
     }
@@ -376,7 +376,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function projectsWhereUserHasPermission($permission)
+    public static function projectsWhereUserHasPermission($permission): self
     {
         return new self('projectsWhereUserHasPermission('.JqlQuery::quote($permission).')');
     }
@@ -389,7 +389,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function projectsWhereUserHasRole($roleName)
+    public static function projectsWhereUserHasRole($roleName): self
     {
         return new self('projectsWhereUserHasRole('.JqlQuery::quote($roleName).')');
     }
@@ -402,7 +402,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function releasedVersions($project = null)
+    public static function releasedVersions($project = null): self
     {
         return new self("releasedVersions($project)");
     }
@@ -413,7 +413,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function standardIssueTypes()
+    public static function standardIssueTypes(): self
     {
         return new self('standardIssueTypes()');
     }
@@ -426,7 +426,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function startOfDay($inc = null)
+    public static function startOfDay($inc = null): self
     {
         if ($inc !== null) {
             $inc = JqlQuery::quote($inc);
@@ -443,7 +443,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function startOfMonth($inc = null)
+    public static function startOfMonth($inc = null): self
     {
         if ($inc !== null) {
             $inc = JqlQuery::quote($inc);
@@ -460,7 +460,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function startOfWeek($inc = null)
+    public static function startOfWeek($inc = null): self
     {
         if ($inc !== null) {
             $inc = JqlQuery::quote($inc);
@@ -477,7 +477,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function startOfYear($inc = null)
+    public static function startOfYear($inc = null): self
     {
         if ($inc !== null) {
             $inc = JqlQuery::quote($inc);
@@ -492,7 +492,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function subtaskIssueTypes()
+    public static function subtaskIssueTypes(): self
     {
         return new self('subtaskIssueTypes()');
     }
@@ -505,7 +505,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function unreleasedVersions($project = null)
+    public static function unreleasedVersions($project = null): self
     {
         return new self("unreleasedVersions($project)");
     }
@@ -516,7 +516,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function votedIssues()
+    public static function votedIssues(): self
     {
         return new self('votedIssues()');
     }
@@ -527,7 +527,7 @@ class JqlFunction
      *
      * @return JqlFunction
      */
-    public static function watchedIssues()
+    public static function watchedIssues(): self
     {
         return new self('watchedIssues()');
     }
