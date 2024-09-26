@@ -2,6 +2,7 @@
 
 namespace JiraRestApi\Project;
 
+use ArrayObject;
 use JiraRestApi\Component\Component;
 use JiraRestApi\Issue\IssueType;
 use JiraRestApi\Issue\Reporter;
@@ -19,15 +20,15 @@ class ProjectService extends \JiraRestApi\JiraClient
      *
      * @throws \JiraRestApi\JiraException
      *
-     * @return Project[] array of Project class
+     * @return ArrayObject<int, Project> array of Project class
      */
-    public function getAllProjects($paramArray = []): \ArrayObject
+    public function getAllProjects($paramArray = []): ArrayObject
     {
         $ret = $this->exec($this->uri.$this->toHttpQueryParameter($paramArray), null);
 
         $prjs = $this->json_mapper->mapArray(
             json_decode($ret, false),
-            new \ArrayObject(),
+            new ArrayObject(),
             Project::class
         );
 
@@ -223,9 +224,9 @@ class ProjectService extends \JiraRestApi\JiraClient
      *
      * @throws \JiraRestApi\JiraException
      *
-     * @return Version[] array of version
+     * @return ArrayObject<int, Version> array of version
      */
-    public function getVersionsPagenated(int|string $projectIdOrKey, array $queryParam = []): \ArrayObject
+    public function getVersionsPagenated(int|string $projectIdOrKey, array $queryParam = []): ArrayObject
     {
         $default = [
             'startAt'    => 0,
@@ -248,7 +249,7 @@ class ProjectService extends \JiraRestApi\JiraClient
 
         $versions = $this->json_mapper->mapArray(
             $json->values,
-            new \ArrayObject(),
+            new ArrayObject(),
             '\JiraRestApi\Issue\Version'
         );
 
@@ -258,7 +259,7 @@ class ProjectService extends \JiraRestApi\JiraClient
     /**
      * get specified's project versions.
      */
-    public function getVersions(string $projectIdOrKey): \ArrayObject
+    public function getVersions(string $projectIdOrKey): ArrayObject
     {
         $ret = $this->exec($this->uri."/$projectIdOrKey/versions");
 
@@ -266,7 +267,7 @@ class ProjectService extends \JiraRestApi\JiraClient
 
         $versions = $this->json_mapper->mapArray(
             json_decode($ret, false),
-            new \ArrayObject(),
+            new ArrayObject(),
             '\JiraRestApi\Issue\Version'
         );
 
@@ -291,7 +292,7 @@ class ProjectService extends \JiraRestApi\JiraClient
 
         $versions = $this->json_mapper->mapArray(
             json_decode($ret, false),
-            new \ArrayObject(),
+            new ArrayObject(),
             '\JiraRestApi\Issue\Version'
         );
 

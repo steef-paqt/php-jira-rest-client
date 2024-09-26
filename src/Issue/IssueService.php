@@ -433,7 +433,7 @@ class IssueService extends \JiraRestApi\JiraClient
      *
      * @throws JiraException
      *
-     * @return Transition[] array of Transition class
+     * @return ArrayObject<int, Transition> array of Transition class
      */
     public function getTransition($issueIdOrKey, $paramArray = []): ArrayObject
     {
@@ -782,7 +782,7 @@ class IssueService extends \JiraRestApi\JiraClient
      *
      * @throws JiraException
      *
-     * @return Priority[] array of priority class
+     * @return ArrayObject<int, Priority> array of priority class
      */
     public function getAllPriorities(): ArrayObject
     {
@@ -853,7 +853,7 @@ class IssueService extends \JiraRestApi\JiraClient
      * @throws JiraException
      * @throws \JsonMapper_Exception
      *
-     * @return Reporter[]
+     * @return ArrayObject<int, Reporter>
      */
     public function getWatchers(string $issueIdOrKey): ArrayObject
     {
@@ -1034,7 +1034,7 @@ class IssueService extends \JiraRestApi\JiraClient
      *
      * @throws JiraException
      *
-     * @return RemoteIssueLink[]
+     * @return ArrayObject<int, RemoteIssueLink>
      *
      * @see https://developer.atlassian.com/server/jira/platform/jira-rest-api-for-remote-issue-links/
      * @see https://docs.atlassian.com/software/jira/docs/api/REST/latest/#api/2/issue-getRemoteIssueLinks
@@ -1115,7 +1115,7 @@ class IssueService extends \JiraRestApi\JiraClient
      * @throws JiraException
      * @throws \JsonMapper_Exception
      *
-     * @return SecurityScheme[] array of SecurityScheme class
+     * @return ArrayObject<int, SecurityScheme> array of SecurityScheme class
      */
     public function getAllIssueSecuritySchemes(): ArrayObject
     {
