@@ -24,9 +24,6 @@ class VersionService extends \JiraRestApi\JiraClient
      */
     public function create($version)
     {
-        if ($version->releaseDate instanceof \DateTimeInterface) {
-            $version->releaseDate = $version->releaseDate->format('Y-m-d');
-        }
         $data = json_encode($version);
 
         $this->log->info("Create Version=\n".$data);
