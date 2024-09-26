@@ -32,7 +32,7 @@ class Customer implements JsonSerializable
         if (!$links instanceof CustomerLinks) {
             $data = $links;
 
-            $links = new CustomerLinks($data);
+            $links = new CustomerLinks($data); // @phpstan-ignore-line
         }
 
         $this->_links = $links;
