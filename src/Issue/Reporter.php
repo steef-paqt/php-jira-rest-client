@@ -49,7 +49,8 @@ class Reporter implements \JsonSerializable
         foreach ($vars as $key => $value) {
             if ($key === 'name' && ($this->isWantUnassigned() === true)) {
                 continue;
-            } elseif ($key === 'wantUnassigned') {
+            }
+            if ($key === 'wantUnassigned') {
                 unset($vars[$key]);
             } elseif (is_null($value) || $value === '') {
                 unset($vars[$key]);
@@ -72,11 +73,7 @@ class Reporter implements \JsonSerializable
      */
     public function isEmpty()
     {
-        if (empty($this->name) && empty($this->self)) {
-            return true;
-        }
-
-        return false;
+        return (empty($this->name) && empty($this->self));
     }
 
     /**
@@ -84,11 +81,7 @@ class Reporter implements \JsonSerializable
      */
     public function isWantUnassigned()
     {
-        if ($this->wantUnassigned) {
-            return true;
-        }
-
-        return false;
+        return $this->wantUnassigned;
     }
 
     /**
