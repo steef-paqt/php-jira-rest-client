@@ -170,7 +170,7 @@ class CustomerService
         return $customer;
     }
 
-    private function avatarUrlsToLinks(?string $url, ?object $avatarUrls): ?CustomerLinks
+    private function avatarUrlsToLinks(?string $url, ?array $avatarUrls): ?CustomerLinks
     {
         if ($avatarUrls === null) {
             return null;
