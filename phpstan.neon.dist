@@ -5,6 +5,6 @@ parameters:
     level: 5
     paths:
         - src
-    excludes_analyse:
+    excludePaths:
         - src/JiraRestApiServiceProvider.php
     reportUnmatchedIgnoredErrors: false
