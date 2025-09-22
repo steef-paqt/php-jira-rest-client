@@ -18,6 +18,8 @@ class IssueSearchResult
 
     public ?string $expand = null;
 
+    public ?bool $isLast = null;
+
     /**
      * @var int
      */
@@ -91,5 +93,18 @@ class IssueSearchResult
     public function setExpand(?string $expand)
     {
         $this->expand = $expand;
+    }
+
+    /**
+     * @return ?bool
+     */
+    public function getIsLast(): ?bool
+    {
+        return $this->isLast;
+    }
+
+    public function setIsLast(?bool $isLast)
+    {
+        $this->isLast = $isLast;
     }
 }
