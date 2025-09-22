@@ -14,10 +14,9 @@ namespace JiraRestApi\Issue;
  */
 class IssueSearchResult
 {
-    /**
-     * @var string
-     */
-    public $expand;
+    public ?string $nextPageToken = null;
+
+    public ?string $expand = null;
 
     /**
      * @var int
@@ -42,49 +41,17 @@ class IssueSearchResult
     /**
      * @return int
      */
-    public function getStartAt()
+    public function getNextPageToken()
     {
-        return $this->startAt;
+        return $this->nextPageToken;
     }
 
     /**
-     * @param int $startAt
+     * @param string $nextPageToken
      */
-    public function setStartAt($startAt)
+    public function setNextPageToken($nextPageToken)
     {
-        $this->startAt = $startAt;
-    }
-
-    /**
-     * @return int
-     */
-    public function getMaxResults()
-    {
-        return $this->maxResults;
-    }
-
-    /**
-     * @param int $maxResults
-     */
-    public function setMaxResults($maxResults)
-    {
-        $this->maxResults = $maxResults;
-    }
-
-    /**
-     * @return int
-     */
-    public function getTotal()
-    {
-        return $this->total;
-    }
-
-    /**
-     * @param int $total
-     */
-    public function setTotal($total)
-    {
-        $this->total = $total;
+        $this->nextPageToken = $nextPageToken;
     }
 
     /**
@@ -114,17 +81,14 @@ class IssueSearchResult
     }
 
     /**
-     * @return string
+     * @return ?string
      */
-    public function getExpand()
+    public function getExpand(): ?string
     {
         return $this->expand;
     }
 
-    /**
-     * @param string $expand
-     */
-    public function setExpand($expand)
+    public function setExpand(?string $expand)
     {
         $this->expand = $expand;
     }
